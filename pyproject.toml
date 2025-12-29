@@ -1,0 +1,107 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tiny-recursive-model"
+version = "0.1.0"
+description = "Tiny Recursive Model (TRM) - A minimal implementation of recursive reasoning networks"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+keywords = [
+    "deep-learning",
+    "pytorch",
+    "reasoning",
+    "recursive-networks",
+    "transformers",
+    "sudoku",
+    "arc-agi"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "torch>=2.0.0",
+    "numpy>=1.21.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+    "pre-commit>=3.0.0",
+]
+docs = [
+    "sphinx>=6.0.0",
+    "sphinx-rtd-theme>=1.0.0",
+    "myst-parser>=1.0.0",
+]
+all = [
+    "tiny-recursive-model[dev,docs]",
+]
+
+[project.scripts]
+trm = "tiny_recursive_model.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/yourusername/tiny-recursive-model"
+Documentation = "https://github.com/yourusername/tiny-recursive-model#readme"
+Repository = "https://github.com/yourusername/tiny-recursive-model.git"
+Issues = "https://github.com/yourusername/tiny-recursive-model/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["tiny_recursive_model*"]
+
+[tool.setuptools.package-data]
+tiny_recursive_model = ["py.typed"]
+
+[tool.black]
+line-length = 100
+target-version = ["py39", "py310", "py311", "py312"]
+include = '\.pyi?$'
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E501",  # line too long (handled by black)
+    "B008",  # do not perform function calls in argument defaults
+]
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --cov=tiny_recursive_model --cov-report=term-missing"
