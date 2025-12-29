@@ -648,76 +648,6 @@ if __name__ == "__main__":
     main()
 ```
 
----
-
-## Troubleshooting
-
-### Installation Issues
-
-**ModuleNotFoundError: No module named 'tiny_recursive_model'**
-```bash
-# Ensure you're in the project directory
-cd tiny-recursive-model
-
-# Reinstall in editable mode
-pip install -e .
-
-# Verify
-python -c "import tiny_recursive_model; print('OK')"
-```
-
-**PyTorch not found / wrong version**
-```bash
-# Check PyTorch installation
-python -c "import torch; print(torch.__version__)"
-
-# Reinstall for your platform (see Installation section)
-pip uninstall torch torchvision torchaudio
-pip install torch torchvision torchaudio  # Add --index-url for CUDA
-```
-
-### Training Issues
-
-**CUDA out of memory**
-```bash
-# Reduce batch size
-python -m tiny_recursive_model train --batch-size 16
-
-# Or use gradient accumulation (edit trainer.py)
-```
-
-**MPS (Apple Silicon) errors**
-```bash
-# Set fallback environment variable
-export PYTORCH_ENABLE_MPS_FALLBACK=1
-python -m tiny_recursive_model train
-```
-
-**Training is very slow (CPU)**
-```bash
-# Use minimal settings for CPU
-python -m tiny_recursive_model train \
-    --epochs 5 \
-    --n-train 50 \
-    --n-augmentations 10 \
-    --batch-size 8
-```
-
-**Loss not decreasing / Accuracy stuck**
-
-1. Check `n_supervision` matches in both model and training configs
-2. Ensure you're using `n_supervision=16` (not 8)
-3. Increase data augmentation: `--n-augmentations 150`
-4. Check learning rate: `--lr 1e-4`
-5. Enable EMA: `use_ema=True`
-
-**NaN loss**
-```bash
-# Reduce learning rate
-python -m tiny_recursive_model train --lr 5e-5
-
-# Enable gradient clipping (already default)
-```
 
 ### Performance Tips
 
@@ -767,10 +697,8 @@ Also consider citing the Hierarchical Reasoning Model which inspired TRM:
 | Resource | Link |
 |----------|------|
 | Original Paper | [arXiv:2510.04871](https://arxiv.org/abs/2510.04871) |
-| Official Samsung Code | [GitHub](https://github.com/SamsungSAILMontreal/TinyRecursiveModels) |
 | HRM Paper | [arXiv:2506.21734](https://arxiv.org/abs/2506.21734) |
 | ARC-AGI Benchmark | [arcprize.org](https://arcprize.org/) |
-| ARC Prize 2025 Results | [Blog Post](https://arcprize.org/blog/arc-prize-2025-results-analysis) |
 
 ---
 
