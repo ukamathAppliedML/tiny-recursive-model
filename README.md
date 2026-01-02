@@ -1,10 +1,10 @@
-# Tiny Recursive Model (TRM)
+# Tiny Recursive Network
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A clean, educational implementation of the **Tiny Recursive Model** from Samsung SAIL Montreal's paper ["Less is More: Recursive Reasoning with Tiny Networks"](https://arxiv.org/abs/2510.04871).
+A clean, educational implementation of the **Tiny Recursive Networks** from Samsung SAIL Montreal's paper ["Less is More: Recursive Reasoning with Tiny Networks"](https://arxiv.org/abs/2510.04871).
 
 TRM achieves remarkable results on complex reasoning tasks with only **7M parameters**—outperforming billion-parameter LLMs on benchmarks like ARC-AGI, Sudoku, and Maze pathfinding.
 
@@ -31,7 +31,7 @@ TRM achieves remarkable results on complex reasoning tasks with only **7M parame
 
 ### What is TRM?
 
-Tiny Recursive Model (TRM) is a **recursive reasoning architecture** that solves complex puzzles by iteratively refining its answers. Instead of scaling up model size, TRM achieves depth through recursion—running the same small network multiple times to progressively improve solutions.
+Tiny Recursive Model  is a **recursive reasoning architecture** that solves complex puzzles by iteratively refining its answers. Instead of scaling up model size, TRM achieves depth through recursion—running the same small network multiple times to progressively improve solutions.
 
 ### Why TRM Matters
 
